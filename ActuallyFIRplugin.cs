@@ -2,17 +2,18 @@ using BepInEx;
 using PrivateRyan.ActuallyFIR.Helpers;
 using PrivateRyan.ActuallyFIR.Patches;
 
-namespace PrivateRyan.ActuallyFIR
+namespace PrivateRyan.ActuallyFIR;
+
+[BepInPlugin("privateryan.actuallyfir", "ActuallyFoundInRaid", Version)]
+[BepInDependency("com.SPT.core", "3.11.0")]
+public class ActuallyFIRPlugin : BaseUnityPlugin
 {
-    [BepInPlugin("privateryan.actuallyfir", "ActuallyFoundInRaid", "1.0.0")]
-    [BepInDependency("com.SPT.core", "3.10.5")]
-    public class ActuallyFIRPlugin : BaseUnityPlugin
+    public const string Version = "1.1.0";
+
+    private void Awake()
     {
-        private void Awake()
-        {
-            Settings.Init(Config);
-            
-            new BotBrainActivatePatch().Enable();
-        }
+        Settings.Init(Config);
+
+        new BotBrainActivatePatch().Enable();
     }
 }

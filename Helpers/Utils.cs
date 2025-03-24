@@ -1,32 +1,31 @@
 ﻿using EFT.InventoryLogic;
 
-namespace PrivateRyan.ActuallyFIR.Helpers
+namespace PrivateRyan.ActuallyFIR.Helpers;
+
+internal class Utils
 {
-    internal class Utils
+    public static EquipmentSlot[] SlotsToProcess { get; } =
+    [
+        EquipmentSlot.Earpiece,
+        EquipmentSlot.Headwear,
+        EquipmentSlot.FaceCover,
+        EquipmentSlot.Eyewear,
+        EquipmentSlot.TacticalVest,
+        EquipmentSlot.ArmorVest,
+        EquipmentSlot.Backpack,
+        EquipmentSlot.Holster,
+        EquipmentSlot.FirstPrimaryWeapon,
+        EquipmentSlot.SecondPrimaryWeapon,
+        EquipmentSlot.Pockets
+    ];
+    
+    public static void ProcessSlot(Slot slot)
     {
-        public static EquipmentSlot[] SlotsToProcess { get; } = new[]
+        Item item = slot.ContainedItem;
+        if (item != null)
         {
-            EquipmentSlot.Earpiece,
-            EquipmentSlot.Headwear,
-            EquipmentSlot.FaceCover,
-            EquipmentSlot.Eyewear,
-            EquipmentSlot.TacticalVest,
-            EquipmentSlot.ArmorVest,
-            EquipmentSlot.Backpack,
-            EquipmentSlot.Holster,
-            EquipmentSlot.FirstPrimaryWeapon,
-            EquipmentSlot.SecondPrimaryWeapon,
-            EquipmentSlot.Pockets
-        };
-        
-        public static void ProcessSlot(Slot slot)
-        {
-            Item item = slot.ContainedItem;
-            if (item != null)
-            {
-                item.SpawnedInSession = true;
-                item.GetAllItems().ExecuteForEach(x => x.SpawnedInSession = true);
-            }
+            item.SpawnedInSession = true;
+            item.GetAllItems().ExecuteForEach(x => x.SpawnedInSession = true);
         }
     }
 }

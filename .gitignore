@@ -1,5 +1,6 @@
-/.idea/
-bin
-obj
+.vs/
+.idea/
+bin/
+obj/
+
 Folder.DotSettings.user
-/.vs/
