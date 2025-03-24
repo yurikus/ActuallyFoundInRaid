@@ -8,7 +8,7 @@ namespace PrivateRyan.ActuallyFIR;
 [BepInDependency("com.SPT.core", "3.11.0")]
 public class ActuallyFIRPlugin : BaseUnityPlugin
 {
-    public const string Version = "1.1.0";
+    public const string Version = "1.1.1";
 
     private void Awake()
     {
